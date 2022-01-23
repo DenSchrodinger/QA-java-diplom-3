@@ -1,0 +1,10 @@
+com\Base.class
+com\model\UserRegisterResponse.class
+com\PageObject\RegisterPage.class
+com\PageObject\LoginPage.class
+com\userActions.class
+com\PageObject\ProfilePage.class
+com\model\User.class
+com\PageObject\MainPage.class
+com\model\Tokens.class
+com\PageObject\ForgotPasswordPage.class
