@@ -2,6 +2,7 @@ package com.PageObject.Yandex;
 import com.PageObject.LoginPage;
 import com.PageObject.MainPage;
 import com.PageObject.RegisterPage;
+import com.codeborne.selenide.Configuration;
 import io.qameta.allure.junit4.DisplayName;
 import org.junit.After;
 import org.junit.Before;
@@ -18,6 +19,7 @@ public class RegistrationNewUserTest{
     @Before
     public void setUp(){
         System.setProperty("webdriver.chrome.driver", "src/main/resources/yandexdriver.exe");
+        Configuration.startMaximized = true;
     }
 
     @After

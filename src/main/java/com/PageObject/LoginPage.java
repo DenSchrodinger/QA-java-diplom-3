@@ -4,8 +4,10 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import static com.codeborne.selenide.Condition.*;
+import static com.codeborne.selenide.WebDriverRunner.url;
 
 public class LoginPage{
+    private final String LOGIN_PAGE_URL = "https://stellarburgers.nomoreparties.site/login";
 
     @FindBy(how = How.XPATH,using = ".//a[text()='Зарегистрироваться']")
     private SelenideElement registerButton;
@@ -31,6 +33,12 @@ public class LoginPage{
     public void recoveryButtonAndEnterButtonShouldBeVisible(){
         newPasswordButton.shouldBe(visible);
         loginButton.shouldBe(visible, enabled);
+    }
+
+    @Step("Проверка загрузки страницы Логина")
+    public boolean loginIsOpen(){
+        loginButton.shouldBe(visible);
+        return url().equals(LOGIN_PAGE_URL);
     }
 
     @Step("Нажатие на кнопку Войти")

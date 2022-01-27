@@ -4,6 +4,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import com.codeborne.selenide.SelenideElement;
 import static com.codeborne.selenide.Condition.*;
+import static com.codeborne.selenide.WebDriverRunner.url;
 
 public class MainPage{
     public final static String MAIN_PAGE_URL = "https://stellarburgers.nomoreparties.site/";
@@ -32,8 +33,8 @@ public class MainPage{
     @FindBy(how = How.XPATH, using = ".//div[contains(@class, 'current')]/span[text()='Начинки']")
     private SelenideElement selectedFillingTab;
 
-    @FindBy(how = How.XPATH,using = "//p[text()='Флюоресцентная булка R2-D3']")
-    private SelenideElement bunR2D3;
+    @FindBy(how = How.XPATH,using = "//button[text()='Оформить заказ']")
+    private SelenideElement makeOrderButton;
 
     @Step("Вход в аккаунт")
     public void enterProfileButtonClick(){
@@ -61,8 +62,10 @@ public class MainPage{
         selectedFillingTab.shouldBe(visible);
     }
 
-    @Step("Проверка наличия булки 'Флюоресцентная булка R2-D3'.")
-    public void bunR2D3ShouldBeVisible(){
-        bunR2D3.shouldBe(visible, enabled);
+    @Step("Проверка видимости кнопки Оформить заказ")
+    public boolean isMainPageLoggedAuthorised(){
+        makeOrderButton.shouldBe(visible, enabled);
+        return url().equals(MAIN_PAGE_URL);
     }
+
 }

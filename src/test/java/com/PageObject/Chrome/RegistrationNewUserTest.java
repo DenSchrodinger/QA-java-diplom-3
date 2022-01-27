@@ -2,16 +2,24 @@ package com.PageObject.Chrome;
 import com.PageObject.LoginPage;
 import com.PageObject.MainPage;
 import com.PageObject.RegisterPage;
+import com.codeborne.selenide.Configuration;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.After;
 import io.qameta.allure.junit4.DisplayName;
 import static com.codeborne.selenide.Selenide.*;
+import static org.junit.Assert.assertTrue;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
 public class RegistrationNewUserTest{
     private final MainPage mainPage = open(MainPage.MAIN_PAGE_URL, MainPage.class);
     private final LoginPage loginPage = page(LoginPage.class);
     private final RegisterPage registerPage = page(RegisterPage.class);
+
+    @Before
+    public void setUp(){
+        Configuration.startMaximized = true;
+    }
 
     @After
     public void tearDown(){

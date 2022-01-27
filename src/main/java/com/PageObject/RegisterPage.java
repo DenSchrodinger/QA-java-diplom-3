@@ -5,6 +5,7 @@ import org.openqa.selenium.support.How;
 import com.codeborne.selenide.SelenideElement;
 import org.apache.commons.lang3.RandomStringUtils;
 import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Condition.exactText;
 
 public class RegisterPage{
 
@@ -54,14 +55,15 @@ public class RegisterPage{
         return RandomStringUtils.randomAlphabetic(5);
     }
 
-    @Step("Проверка, что введен пароль менее 6 символов")
-    public void wrongPasswordControlCheck(){
-        wrongPasswordControl.shouldBe(visible);
-    }
-
     @Step("Нажатие на кнопку Войти")
     public void clickProfileEnterButton(){
         loginButton.click();
+    }
+
+    @Step("Проверка, что введен пароль менее 6 символов")
+    public void wrongPasswordControlCheck(){
+        wrongPasswordControl.shouldBe(visible);
+        wrongPasswordControl.shouldHave(exactText("Некорректный пароль"));
     }
 
 }
